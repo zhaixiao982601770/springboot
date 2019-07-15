@@ -11,12 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 @Service
 @Slf4j
+@Transactional      //添加事务
 public class UserServiceImp implements UserService{
 
     @Autowired
@@ -24,6 +26,7 @@ public class UserServiceImp implements UserService{
 
     //查询所有
     @Override
+    @Transactional(readOnly = true)
     public Object getAllUser(PageParam<User> pageParam) {
 
         //分页
@@ -61,6 +64,7 @@ public class UserServiceImp implements UserService{
 
     @Cacheable(key = "#p0",value = "users")
     @Override
+    @Transactional(readOnly = true)
     public User getAllUserById(int id) {
         log.info("走的是数据库查询");
         return userDao.getAllUserById(id);

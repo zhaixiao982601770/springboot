@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class TaskTest1 {
 
-    @Scheduled(cron = "0/5 * * * * *")
-
-    //@Scheduled(fixedRate = 5000)
+    //  @Scheduled(cron = "0/5 * * * * *")
+/*
+    @Scheduled(fixedRate = 5000)
     public void test(){
         log.info("我是第一个定时");
-    }
+    }*/
 }
