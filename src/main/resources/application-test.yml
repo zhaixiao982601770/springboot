@@ -1,0 +1,8 @@
+server:
+
+  port: 8083
+
+app:
+  info: this is test
+  author: hahh
+  email: 6762734@qq.com
