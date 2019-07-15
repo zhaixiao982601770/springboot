@@ -15,6 +15,8 @@ public class TaskTest2 implements SchedulingConfigurer {
     @Mapper
     public interface cronmapper{
 
+
+        //
         @Select("select from where id")
         public String getCronById(String id);
     }
