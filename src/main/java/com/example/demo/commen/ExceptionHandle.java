@@ -1,5 +1,7 @@
 package com.example.demo.commen;
 
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,8 +32,12 @@ public class ExceptionHandle {
         }else if(e instanceof HttpMessageNotReadableException){
             HttpMessageNotReadableException ex= (HttpMessageNotReadableException)e;
             return MyRsp.error().msg("json数据格式可能发生错误，请检查："+ex.getMessage());
+        }else if(e instanceof UnauthorizedException){
+            return MyRsp.error().msg("未授权");
+        }else if(e instanceof AuthorizationException){
+            return MyRsp.error().msg("身份认证失败");
         }else {
-            return MyRsp.error().msg("这是一个未知异常");
+            return MyRsp.error().msg("一个未知错误");
         }
 
     }

@@ -6,7 +6,7 @@
 
     <!-- 动态条件查询 -->
     <select id="getAllUser" parameterType="User" resultType="User">
-        SELECT * FROM user
+        SELECT * FROM users
         <where>
             <if test=" id !=null and id !='' ">
                 and id=#{id}
@@ -23,18 +23,34 @@
             <if test=" roleId !=null and roleId !='' ">
                 and roleId=#{roleId}
             </if>
+
+            <if test=" email !=null and email !='' ">
+                and email=#{email}
+            </if>
+
+            <if test=" isActive !=null and isActive !='' ">
+                and isActive=#{isActive}
+            </if>
+
+            <if test=" address !=null and address !='' ">
+                and address=#{address}
+            </if>
+
+            <if test=" headPicture !=null and headPicture !='' ">
+                and headPicture=#{headPicture}
+            </if>
         </where>
 
     </select>
 
     <select id="getAllUserById" parameterType="User" resultType="User">
-        select * from user where id=#{id}
+        select * from users where id=#{id}
     </select>
 
 
     <insert parameterType="User" id="addUser">
 
-        insert into user
+        insert into users
         <trim prefix="(" suffix=")" suffixOverrides=",">
 
             <if test=" userName !=null and userName !='' ">
@@ -47,6 +63,22 @@
 
             <if test=" roleId !=null and roleId !='' ">
                 roleId,
+            </if>
+
+            <if test=" email !=null and email !='' ">
+                email,
+            </if>
+
+            <if test=" isActive !=null and isActive !='' ">
+                isActive,
+            </if>
+
+            <if test=" address !=null and address !='' ">
+                address,
+            </if>
+
+            <if test=" headPicture !=null and headPicture !='' ">
+                headPicture,
             </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
@@ -62,14 +94,32 @@
             <if test=" roleId !=null and roleId !='' ">
                 #{roleId},
             </if>
-        </trim>
 
+            <if test=" email !=null and email !='' ">
+                #{email},
+            </if>
+
+            <if test=" isActive !=null and isActive !='' ">
+                #{isActive},
+            </if>
+
+            <if test=" address !=null and address !='' ">
+                #{address},
+            </if>
+
+            <if test=" headPicture !=null and headPicture !='' ">
+                #{headPicture},
+            </if>
+        </trim>
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
 
     </insert>
 
 
     <update parameterType="User" id="updateUser">
-        update user set
+        update users set
 
         <trim suffixOverrides=",">
             <if test=" id !=null and id !='' ">
@@ -88,6 +138,22 @@
                 roleId=#{roleId},
             </if>
 
+            <if test=" email !=null and email !='' ">
+                email=#{email},
+            </if>
+
+            <if test=" isActive !=null and isActive !='' ">
+                isActive=#{isActive},
+            </if>
+
+            <if test=" address !=null and address !='' ">
+                address=#{address},
+            </if>
+
+            <if test=" headPicture !=null and headPicture !='' ">
+                headPicture=#{headPicture},
+            </if>
+
         </trim>
         where id=#{id}
 
@@ -95,7 +161,7 @@
 
     <delete id="deleteUser" parameterType="int">
 
-        delete from user where id=#{id}
+        delete from users where id=#{id}
 
     </delete>
 

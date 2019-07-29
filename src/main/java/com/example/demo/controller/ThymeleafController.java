@@ -4,6 +4,7 @@ import com.example.demo.commen.PageParam;
 import com.example.demo.model.User;
 import com.example.demo.services.UserService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("thymeleaf")
+@Api(value = "引擎的引用",description = "thymeleaf引擎的引入")
 public class ThymeleafController {
 
     @Autowired

@@ -1,8 +1,0 @@
-server:
-
-  port: 8081
-
-app:
-  info: this is div
-  author: MMM
-  email:  2131341@qq.com

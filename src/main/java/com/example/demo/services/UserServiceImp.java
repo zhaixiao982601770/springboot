@@ -54,6 +54,7 @@ public class UserServiceImp implements UserService{
         return userDao.addUser(user)==1;
     }
 
+    //修改
     @Override
     public boolean updateUser(User user) {
         if (StringUtils.isEmpty(user.getId())){
@@ -62,11 +63,42 @@ public class UserServiceImp implements UserService{
         return userDao.updateUser(user)==1;
     }
 
+    //根据ID进行查询
     @Cacheable(key = "#p0",value = "users")
     @Override
     @Transactional(readOnly = true)
     public User getAllUserById(int id) {
         log.info("走的是数据库查询");
         return userDao.getAllUserById(id);
+    }
+
+    //用户登录
+    @Override
+    public User login(String userName, String password) {
+        User con =new User();
+        con.setUserName(userName);
+        con.setPassword(password);
+
+        List<User> userList =userDao.getAllUser(con);
+        User user =null;
+        if (userList.size()!=0){
+            user=userList.get(0);
+        }
+        return user;
+    }
+
+    //用户注册
+    @Override
+    public User register(User user) {
+        user.setIsActive(0);
+        user.setRoleId("general");
+        userDao.addUser(user);
+
+        return userDao.getAllUserById(user.getId());
+    }
+
+    @Override
+    public User userNameIsReged(String userName) {
+        return userDao.getAllUserByName(userName);
     }
 }

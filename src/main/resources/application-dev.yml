@@ -11,28 +11,28 @@ spring:
     database: 0
     host: localhost
     port: 6379
-    password: zhai520@.
+    password:
     timeout: 5000
   datasource:
     url: jdbc:mysql://localhost:3306/bill?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
     username: root
-    password: zhai520@.
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    druid:
-      filters: stat,wall,slf4j,config
-      max-active: 100
-      initial-size: 1
-      max-wait: 60000
-      min-idle: 1
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: select 'x'
-      test-on-borrow: false
-      test-on-return: false
-      pool-prepared-statements: true
-      max-open-prepared-statements: 50
-      max-pool-prepared-statement-per-connection-size: 20
+  druid:
+    filters: stat,wall,slf4j,config
+    max-active: 100
+    initial-size: 1
+    max-wait: 60000
+    min-idle: 1
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: select 'x'
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-open-prepared-statements: 50
+    max-pool-prepared-statement-per-connection-size: 20
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -40,7 +40,7 @@ mybatis:
 
 
 app:
-  imgPath: root/imag/
+  imgPath: D:/imag/
   info: this is wap
   author: zhai
   email: 111111111@qq.com
@@ -61,3 +61,4 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+

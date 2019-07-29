@@ -15,4 +15,10 @@ public interface UserService {
     boolean updateUser(User user);
 
     User getAllUserById(int id);
+
+    User login(String userName,String password);
+
+    User register(User user);
+
+    User userNameIsReged(String userName);
 }

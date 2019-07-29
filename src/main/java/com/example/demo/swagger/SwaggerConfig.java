@@ -26,7 +26,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
  
 /**
- * Created by xiongzh on 2018/3/21.
+ * Created by zhaixiao on 2018/3/21.
  */
 @Configuration
 @EnableSwagger2
@@ -38,7 +38,7 @@ public class SwaggerConfig {
     public Docket docket(){
     	ParameterBuilder ticketPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();  
-    	ticketPar.name("Authorization").description("用户token")
+    	ticketPar.name("ticket").description("用户token")
     	.modelRef(new ModelRef("string")).parameterType("header") 
     	.required(false).build(); //header中的ticket参数非必填，传空也可以
     	pars.add(ticketPar.build()); 

@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.example.demo.model.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface UserDao {
     int updateUser(User user);
 
     User getAllUserById(int id);
+
+
+    @Select("select * from users where userName=#{userName}")
+    User getAllUserByName(String userName);
 }

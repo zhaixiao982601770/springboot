@@ -21,4 +21,12 @@ public class User implements Serializable {
     private int id;
 
     private String roleId;
+
+    private String email;
+
+    private int isActive;
+
+    private String address;
+
+    private String headPicture;
 }
